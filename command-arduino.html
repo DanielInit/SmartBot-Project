@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>command-arduino</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="command-style.css">
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+      <meta charset="utf-8">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script type ="text/javascript" src="appelF.js"></script>
+   </head>
+   <body id="fond" style="height: 100vh;">
+     <div class="move">
+         <button class="direction" id="avancer" onclick="BoutonUp()"> avancer</button>
+         <button class="direction" id="reculer" onclick="BoutonDown()"> reculer</button>
+         <button class="direction" id="gauche" onclick="BoutonLeft()"> gauche</button>
+         <button class="direction" id="droite" onclick="BoutonUp()"> droite</button>
+         <button class="direction" id="auto" onclick="BoutonAuto()">Automatique</button> 
+     </div>
+     <script>
+        $(document).ready(function(){
+            $(".direction").click(function()
+            { 
+                console.log($(this).attr("id"));
+                SendMV($(this).attr("id"));     
+         });
+    });
+
+function SendMV(mouvement)
+{
+    console.log("fonction mouvement");
+   $.ajax({
+                    type:"POST",
+                    url:"http://localhost/API/api.php",
+                    data:  {mouvement: mouvement},
+                    success: function(result) {
+                        alert('Donnée envoyée');
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown)
+                    }
+         });
+}
+
+</script>
+
+    
+
+
+      <div class="command-d">
+                  <button class="led" id="off" onclick="BoutonOFF()"> OFF</button>
+                 
+                   <button class="led" id="on" onclick="BoutonON()"> ON</button>             
+                   <button class="led" id="blink" onclick="Boutonblink()">CLIGNOTER</button>
+                   <script>
+                    $(document).ready(function(){
+                        $(".led").click(function()
+                        { 
+                            console.log($(this).attr("id"));
+                            SendCMDLED($(this).attr("id"));   
+                     });
+                });
+
+            function SendCMDLED(action)
+            {
+                console.log("fonction led");
+               $.ajax({
+                                type:"POST",
+                                url:"http://localhost/API/api.php",
+                                data:  {action: action},
+                                success: function(result) {
+                                    alert('Donnée envoyée');
+            
+                                },
+                                error: function(jqXHR, textStatus, errorThrown) {
+                                    console.log(textStatus, errorThrown)
+                                }
+                     });
+            }
+            
+            </script>
+
+                   <div class="menuDR">
+                      <header id="titleV">Faire clignoter la LED</header>
+                        <br><br>
+                      <select id ="vitesseC" class="VitesseP">
+                         <option value="" disabled selected >Choisissez un délais de clignotement</option>
+                        <option value="300">250 Ms</option>
+                        <option value="1000">1000 Ms</option>
+                        <option value="1500">1500 Ms</option> 
+                      </select>
+                      <br><br>
+                      <button id ="validerV" class="buttonV">Valider</button>
+                   </div>
+                <div class="distance-m">
+                   <p id="txt-distance">Distance :</p>
+                <p><span id="distanceV">%data%</span></p>
+
+                <script>
+                    $(document).ready(function(){
+                        $("#validerV").click(function(){
+                        var distance = document.getElementById("distanceV").innerHTML;
+                        //console.log(distance);
+                        //SendDIST($(this).attr("id")); 
+                console.log("fonction distance");
+               $.ajax({
+                   type : "POST",
+                   url : "http://localhost/API/api.php",
+                   data : {distance: distance},
+                   success: function(){
+                       alert("donnée envoyer");
+                   }
+               });
+            });
+        });
+                </script>
+                </div>
+         <div class="trackbar">
+              <label>0%</label>
+               <input type="range" min="0" max="180" step="10;">
+               <label id="cent">100%</label>
+         </div>
+      </div>
+      <a href="http://localhost/API/resultval.php" id="lien">Voir les données > ></a>
+      
+   </body>
+</html>

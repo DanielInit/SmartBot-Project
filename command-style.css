@@ -1,0 +1,217 @@
+#fond {
+    background: linear-gradient(
+        to right, #6c6ee6,
+        #120760, #e0dedb);
+    background-size: 400% 400%;
+    animation: animate 10s infinite ease-in-out;
+}
+    
+@keyframes animate  {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{background-position: 0 50%;
+    }
+}
+
+
+
+.led{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 5%;
+    border: outset;
+}
+button{
+    width: 30%;
+    height: 15%;
+    border-radius: 25%;
+}
+#on{
+    position: absolute;
+    right: 3%;
+}
+#off{
+    position: absolute;
+    left: 3%;
+}
+#blink{
+    position: absolute;
+    right: 3%;
+    top: 20%;
+}
+#auto{
+    top: 55%;
+    left: 45%;
+    border-radius: initial;
+    width: 20%;
+}
+.command-d{
+    background-color: grey;
+    position: absolute;
+    right: 1%;
+    height: 90%;
+    width: 30%;
+    border-radius: 5px;
+    box-shadow: -2px 6px 5px 5px;
+    border: inset;
+}
+.distance-m{
+    border-radius: 2px;
+    position: absolute;
+    top: 30%;
+    left: 2%;
+    width: 35%;
+    height: 13%;
+    background-color: #e9e9ed;
+    text-shadow: 2px 0px 3px;
+    border: double;
+    font-size: 80%;
+}
+p#txt-distance{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    text-align: start;
+    position: absolute;
+    top: 0%;
+}
+span#distanceV{
+    position: absolute;
+    top:75%;
+    width: 90%;
+}
+.trackbar{
+    position: absolute;
+    left: 83%;
+    writing-mode: vertical-rl;
+    top: 50%;
+    font-size: 90%;
+}
+label {
+    writing-mode: horizontal-tb;
+    position: relative;
+}
+label#cent{
+    position: absolute;
+}
+.menuDR{
+    position: absolute;
+    bottom: 13%;
+    height: 35%;
+    left: 2%;
+    border: groove;
+    width: 75%;
+}
+header#titleV{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+button#validerV.buttonV{
+    text-decoration: none;
+    font-size: 70%;
+    color: #060606;
+    padding: 5% 20%;
+    border: 3px solid #5f605f;
+    position: relative;
+    position: absolute;
+    bottom: 13%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+button#validerV.buttonV::before,
+button#validerV.buttonV::after{
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: inherit;
+    transition: all .5s ease-in;
+}
+
+button#validerV.buttonV::before{
+    top: -15px;
+    left: -15px;
+    border-width: 3px 0 0 3px;
+}
+
+button#validerV.buttonV::after{
+    bottom: -15px;
+    right: -15px;
+    border-width: 0 3px 3px 0;
+}
+
+button#validerV.buttonVn:hover::before,
+button#validerV.buttonV:hover::after{
+    width: calc(100% + 27px);
+    height: calc(100% + 27px);
+}
+select#vitesseC{
+    width: 90%;
+}
+
+.move{
+    width: 50%;
+    height: 60%;
+    background-color: rgb(31, 31, 31);
+    position: absolute;
+    top: 15%;
+    left: 5%;
+
+}
+.move::before,
+.move::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(45deg, #ff0000, #00f0f0, #00ff00, #0000ff, #ff0000, #00f0f0, #00ff00, #0000ff, #f00f0f);
+  width: 100%;
+  height: 100%;
+  transform: scale(1.02);
+  z-index: -1;
+  background-size: 500%;
+  animation: flou 20s infinite;
+}
+.move::after {
+    filter: blur(20px);
+}
+@keyframes flou {
+    0% { background-position: 0 0; }
+    50% { background-position: 300% 0; }
+    100% { background-position: 0 0; }
+}
+
+button.direction{
+    border-style: groove;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: relative;
+
+}
+
+button#reculer{
+    top: 70%;
+}
+button#avancer{
+    top: 10%;
+    left: 32%;
+}
+button#droite{
+    top: 25%;
+    left: 65%;
+}
+button#gauche{
+    top: 40%;
+    right: 60%;
+}
+
+a#lien{
+    border: 0.3rem groove;
+    position: absolute ;
+    bottom: 1%;
+    right: 10%;
+    background-color: white;
+    border-radius: 10%;
+
+}
